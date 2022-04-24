@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Show Article</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</head>
+<body>
+<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Employee Management System</a>
+				<a class="navbar-brand" href="#" th:href="@{article/list}">Articles</a>
+				<a class="navbar-brand" href="#" th:href="@{provider/list}">Provider</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<div class="container my-5">
+		<h3 align="center">Article details</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-8">
+					<form action="#" method="">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label for="label" class="col-form-label">ID</label>
+								<p th:text="${article.id}">Id</p>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="label" class="col-form-label">Label</label>
+								<p th:text="${article.label}">Label</p>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="label" class="col-form-label">Price</label>
+								<p th:text="${article.price}">Price</p>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="label" class="col-form-label">Provider</label>
+								<p th:text="${article.provider.name}">Provider</p>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="label" class="col-form-label">Picture</label> <img
+									alt="Image" th:src="@{'/uploads/'+ ${article.picture}}"
+									width="250" height="250" />
+							</div>
+
+							<div class="form-group col-md-8">
+								<a th:href="@{/article/list}"> <input type="button"
+									class="btn btn-primary" value="return to Article list"></a>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
